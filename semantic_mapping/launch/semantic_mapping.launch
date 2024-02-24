@@ -1,0 +1,13 @@
+
+<launch>
+
+  <!-- Map server -->
+  <arg name="map_file" default="$(find semantic_mapping)/maps/lab_map_2.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+  <node name="semantic_mapping_node" type="semantic_mapping.py" pkg="semantic_mapping" output="screen"/>
+
+  <!-- Launch Rviz-->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find semantic_mapping)/rviz/gazebo.rviz" />
+
+</launch>
